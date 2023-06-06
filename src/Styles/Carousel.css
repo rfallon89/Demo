@@ -10,7 +10,7 @@
 .slide-container:after{
     content:'';
     position:absolute;
-    width: 100%;
+    width: 50%;
     height: 440px;
     background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.818));
 }
