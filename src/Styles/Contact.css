@@ -1,0 +1,22 @@
+#contact-container{
+width:100%;
+}
+
+#section-container{
+    display:flex;
+    flex-direction: row;
+    margin:0 260px;
+}
+
+#contact-container section {
+    width:50%;
+}
+
+#image-container {
+    width: 50%
+}
+
+#image-container img{
+    object-fit: cover;
+}
+
