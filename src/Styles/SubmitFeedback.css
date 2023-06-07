@@ -1,0 +1,18 @@
+#feedback-container{
+    background-color: rgba(114, 212, 114, 0.676);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:25px 0;
+    margin:25px 0;
+}
+#feedback-container h2{
+    margin: 0;
+}
+#feedback-container p {
+    margin:0;
+}
+#feedback-container span{
+    border-radius: 100%;
+}
