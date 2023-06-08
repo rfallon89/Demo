@@ -45,7 +45,7 @@ function Form({setSubmit}){
 
     const validateEmail = () =>{
         let input = data.EmailAddress 
-        if(input.length || !input.match(/[^\s@]+@[^\s@]+\.[^\s@]+/gi)){
+        if(!input.length || !input.match(/[^\s@]+@[^\s@]+\.[^\s@]+/gi)){
             setValidate({...validate,email:false})
         }
         else{
@@ -91,7 +91,9 @@ function Form({setSubmit}){
 
     const handleSubmit = (e) =>{
         e.preventDefault()
+        if(!Object.values(validate).includes(false)){
         contactUS(data,addressData).then(()=>setSubmit(true))
+        }
     }
 
     return(

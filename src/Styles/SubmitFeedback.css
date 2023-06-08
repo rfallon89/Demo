@@ -13,6 +13,13 @@
 #feedback-container p {
     margin:0;
 }
-#feedback-container span{
-    border-radius: 100%;
+#tick{
+    border-radius: 50%;
+    border:solid 1px black;
+    background-color: green;
+    width:100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

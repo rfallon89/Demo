@@ -103,3 +103,66 @@
     line-height: 1;
 }
 
+@media only screen and (max-width: 750px){
+
+    .slide-container{
+        display:flex;
+        position: relative;
+        color:rgb(218, 218, 218);
+        height: 340px;
+        width: 100%;
+        overflow: hidden;
+    }
+    .slide-container:after{
+        content:'';
+        position:absolute;
+        width: 50%;
+        height: 340px;
+        background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.818));
+    }
+    #carousel-image0{
+        width: 100%;
+        object-position: 0% 28%;
+        object-fit: cover;
+    }
+    #carousel-image1{
+        width: 102%;
+        object-fit: cover;
+    }
+    #carousel-image2{
+        width: 102%;
+        object-position: 0% 5%;
+        object-fit: cover;
+    }
+    .swiper-button-prev{
+        display: none;
+    }
+    .swiper-button-prev::after {
+        display: none;
+      }
+    
+    .swiper-button-next{
+        display:none
+    }
+    .swiper-button-next::after {
+        display: none;
+      }
+    
+    .text-container{
+        margin-left: 0;
+        padding:0 5%;
+    }
+    
+    #carousel-title{
+        font-size: 28px;
+        font-weight: 250;
+        margin:0;
+    }
+    #carousel-subtitle{
+        font-size: 16px;
+        font-weight: 250;
+        margin:20px 0;
+    }
+    
+  
+}

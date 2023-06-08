@@ -2,6 +2,7 @@ import Carousel from "./Carousel"
 import office from '../Assets/shutter3.jpg'
 import { Link } from "react-router-dom"
 import '../Styles/Home.css'
+import { useState } from "react"
 
 function Home(){
     return(

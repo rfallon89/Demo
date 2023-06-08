@@ -10,3 +10,10 @@ footer p {
     color:#dadadac6;
     margin:0 260px;
 }
+
+@media only screen and (max-width: 750px){
+    footer p {
+        margin:0;
+        text-align: center;
+    }
+}
