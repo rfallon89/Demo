@@ -29,4 +29,26 @@ margin:35px 0;
     object-fit: cover;
 }
 
+@media only screen and (max-width: 750px){
+        #section-container{
+            margin:0 5%;
+        }
+        
+        #section-container section h1 {
+            width:100%;
+            color: #6e6e6e ;
+            font-weight: 500;
+            font-size: 20px;
+            margin:0
+        }
+        
+        #contact-container section {
+            width:100%;
+        }
+        
+        #image-container {
+           display: none;
+        }
+
+}
 

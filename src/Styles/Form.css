@@ -132,3 +132,14 @@ textarea{
 .show{
     color:red
 }
+
+@media only screen and (max-width: 750px){
+    .input-2{
+    width:100%;
+    }
+    .row {
+    display: flex;
+    flex-direction: column;
+}
+  
+}

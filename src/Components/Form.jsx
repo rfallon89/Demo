@@ -21,18 +21,28 @@ function Form({setSubmit}){
         Country:'',
     })
     const [validate, setValidate] = useState({
-        name:true,
-        email:true,
+        name:'default',
+        email:'default',
         phone1:true,
         phone2:true,
-        message:true,
+        message:'default',
         AddressLine1:true,
         AddressLine2:true,
-        CityTown:true,
         StateCounty:true,
         Postcode:true,
         Country:true,
     })
+
+    const UpdateAddress = () =>{
+        setShowAddress(true)
+        setValidate({...validate,
+            AddressLine1:'default',
+        AddressLine2:'default',
+        StateCounty:'default',
+        Postcode:'default',
+        Country:'default'}
+        )
+    }
 
     const validateName =()=>{
         if(!data.FullName.length){
@@ -56,8 +66,7 @@ function Form({setSubmit}){
     const validatePhone = ({target}) => {
         let number = target.id.slice(-1)
         let phoneData = data.PhoneNumbers[+number-1]
-
-            if(phoneData.length>0){
+            if(phoneData){
                 if(phoneData.length<10 || phoneData.length>20){
                     setValidate({...validate,[`${target.id}`]:false})
                 }
@@ -91,7 +100,7 @@ function Form({setSubmit}){
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        if(!Object.values(validate).includes(false)){
+        if(!Object.values(validate).includes(false) ||!Object.values(validate).includes('default')){
         contactUS(data,addressData).then(()=>setSubmit(true))
         }
     }
@@ -102,12 +111,12 @@ function Form({setSubmit}){
                     <div className='column'>
                         <label id="name">Full name</label>
                         <input className='input-2' id="name" type="text" onChange={({target:{value}})=>setData({...data,FullName:value})} onBlur={validateName} value={data.FullName}/>
-                        <p className={validate.name?'hide':'show'}>*Required</p>
+                        <p className={validate.name || validate.name === 'default' ?'hide':'show'}>*Required</p>
                     </div>
                     <div className='column'>
                         <label id="email">Email address</label>
                         <input className='input-2' id="email" type="email" onChange={({target:{value}})=>setData({...data,EmailAddress:value})} onBlur={validateEmail} value={data.EmailAddress}/>
-                        <p className={validate.email?'hide':'show'}>*Invalid email address</p>
+                        <p className={validate.email || validate.email === 'default'?'hide':'show'}>*Invalid email address</p>
                     </div>
                 </div>
 
@@ -118,7 +127,7 @@ function Form({setSubmit}){
                     change.PhoneNumbers[0] = value
                     setData(change)
                 }} onBlur={validatePhone} value={data.PhoneNumbers[0]}/>
-                <p className={validate.phone1?'hide':'show'}>*Invalid number</p>
+                <p className={validate.phone1 || validate.phone1 === 'default'?'hide':'show'}>*Invalid number</p>
                 </div>
 
                 <div className='column'>
@@ -128,7 +137,7 @@ function Form({setSubmit}){
                     change.PhoneNumbers[1] = value
                     setData(change)
                 }} onBlur={validatePhone} value={data.PhoneNumbers[1]}/>
-                  <p className={validate.phone2?'hide':'show'}>*Invalid number</p>
+                  <p className={validate.phone2 || validate.phone2 === 'default'?'hide':'show'}>*Invalid number</p>
                 </div> 
 
                 <button id='phone' disabled={!addNumber} onClick={()=>setAddNumber(false)}>Add new phone number</button>
@@ -139,12 +148,12 @@ function Form({setSubmit}){
                     <p id='message-max'>Maximum text length is 500 characters</p>
                     </div>
                     <textarea id="message" name="message" maxLength='500'rows='8' onChange={({target:{value}})=>setData({...data,Message:value})} onBlur={validateMessage} value={data.Message}/>
-                    <p className={validate.message?'hide':'show'}>*required</p>
+                    <p className={validate.message || validate.message === 'default'?'hide':'show'}>*required</p>
                 </div>
 
                     <div>
                         <div id='address-toggle'>
-                        <button onClick={()=>setShowAddress(!showAddress)} id={showAddress?'address-open':'address-closed'}></button>
+                        <button onClick={UpdateAddress} id={showAddress?'address-open':'address-closed'}></button>
                         <p>Add address details</p>
                         </div>
                     </div>
