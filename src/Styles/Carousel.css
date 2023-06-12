@@ -3,7 +3,7 @@
     display:flex;
     position: relative;
     color:rgb(218, 218, 218);
-    height: 440px;
+    height: 60vh;
     width: 100%;
     overflow: hidden;
 }
@@ -15,18 +15,18 @@
     background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.912));
 }
 #carousel-image0{
-    width: 102%;
+    width: 100%;
     object-position: 0% 28%;
-    object-fit: cover;
+    object-fit: cover;  
 }
 #carousel-image1{
-    width: 102%;
-    object-fit: cover;
+    width: 100%;
+    object-fit: cover; 
 }
 #carousel-image2{
-    width: 102%;
+    width: 100%;
     object-position: 0% 5%;
-    object-fit: cover;
+    object-fit: cover; 
 }
 .swiper-button-prev{
     background-image:url(../Assets/Icon_Arrow.svg);
@@ -34,8 +34,8 @@
     background-size: 10px 10px;
     background-position: center;
     background-color: rgba(255, 255, 255, 0.25);
-    height: 37px;
-    width: 37px;
+    height: 35px;
+    width: 35px;
     left:0px;
     border-radius: 0 10% 10% 0;
 }
@@ -50,8 +50,8 @@
     transform:rotate(180deg);
     background-position: center;
     background-color: rgba(255, 255, 255, 0.25);
-    height: 37px;
-    width: 37px;
+    height: 35px;
+    width: 35px;
     right:0px;
     border-radius: 0 10% 10% 0;
 }
@@ -70,7 +70,7 @@
   }
 .text-container{
     position:absolute;
-    margin-left: 260px;
+    margin-left: 14%;
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -80,6 +80,7 @@
 #carousel-title{
     font-size: 36px;
     font-weight: 250;
+    color: rgb(247, 247, 247);
     margin:0;
     color:whitesmoke;
 }
@@ -87,7 +88,7 @@
     font-size: 16px;
     font-weight: 250;
     margin:30px 0;
-    color: whitesmoke;
+    color: rgb(247, 247, 247);
 }
 
 #link{
