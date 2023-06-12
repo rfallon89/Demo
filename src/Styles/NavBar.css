@@ -4,7 +4,9 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     margin:0;
+    box-sizing: border-box;
     height: 60px;
+    padding:0 14%;
     border-bottom: solid 1px #dadada75;
 }
 
@@ -27,13 +29,11 @@ a {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-right: 260px;
 }
 
 #logo-container{
     display: flex;
     align-items: center;
-    margin-left: 260px;
 }
 
 #logo {
