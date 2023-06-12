@@ -12,8 +12,5 @@ export const bannerDetails = () => {
 
 export const contactUS = (data, address) => {
   const body = { ...data, AddressDetails: { ...address } };
-  return api
-    .post("contact-us/submit", body)
-    .then((res) => console.log(res))
-    .catch((e) => console.log(e));
+  return api.post("contact-us/submit", body).then((res) => res);
 };

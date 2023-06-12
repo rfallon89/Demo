@@ -10,9 +10,6 @@
 }
 
 .Address-row{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
     display: none;
 }
 
@@ -46,6 +43,105 @@
     color:#616161;
     font-weight: 600;
 }
+p{
+    margin:0;
+}
+.top-line{
+    display:grid;
+    grid-template-columns: 49% 49% ;
+    grid-template-rows: 1fr 1fr 0.2fr;
+    grid-template-areas: 
+    "name-l email-l"
+    "name-i email-i"
+    "name-v email-v";
+    column-gap: 2%;
+}
+#name-l{
+    grid-area: name-l;
+}
+.name-i{
+    grid-area: name-i;
+}
+#name-v{
+    grid-area: name-v;
+}
+#email-l{
+    grid-area: email-l;
+}
+.email-i{
+    grid-area: email-i;
+}
+#email-v{
+    grid-area: email-v;
+}
+.address{
+    display:grid;
+    grid-template-columns: 23.5% 23.5% 23.5% 23.5% ;
+    grid-template-rows: 1fr 1fr 0.2fr 1fr 1fr 0.2fr;
+    grid-template-areas: 
+    "address1-l address1-l address2-l address2-l"
+    "address1-i address1-i address2-i address2-i"
+    "address1-v address1-v address2-v address2-v"
+    "city-l state-l postcode-l country-l"
+    "city-i state-i postcode-i country-i"
+    "city-v state-v postcode-v country-v";
+    column-gap: 2%;
+}
+#address1-v{
+    grid-area: address1-v;
+}
+#address2-v{
+    grid-area: address2-v;
+}
+#city-v{
+    grid-area: city-v;
+}
+#country-v{
+    grid-area: country-v;
+}
+#address1-l{
+    grid-area: address1-l;
+}
+#state-v{
+    grid-area: state-v;
+}
+#postcode-v{
+    grid-area: postcode-v;
+}
+#address2-l{
+    grid-area: address2-l;
+}
+.address1-i{
+    grid-area: address1-i;
+} 
+.address2-i{
+    grid-area: address2-i;
+}
+#city-l{
+    grid-area: city-l;
+}
+#state-l{
+    grid-area: state-l;
+}
+.city-i{
+    grid-area: city-i;
+} 
+.state-i{
+    grid-area: state-i;
+}
+#postcode-l{
+    grid-area: postcode-l;
+}
+#country-l{
+    grid-area: country-l;
+}
+.country-i{
+    grid-area: country-i;
+} 
+.postcode-i{
+    grid-area: postcode-i;
+}
+
 
 #phone {
     border:none;
@@ -105,14 +201,6 @@ input{
     height: 30px;
 }
 
-.input-2{
-    width:220px;
-}
-
-.input-4{
-    width:75%;
-}
-
 textarea{
     background-color: rgba(225, 225, 225, 0.117);
     border: solid 1px rgba(187, 187, 187, 0.481) ;
@@ -127,36 +215,40 @@ textarea{
 .show{
     color:red
 }
-.m-row{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between; 
-    }
-
-.a-row{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 
 @media only screen and (max-width: 750px){
-    .input-2{
-    width:98%;
-    }
-    .row {
-    display: flex;
-    flex-direction: column;
-    }
-    
-    .a-row{
-        display:flex;
-        flex-direction: column;
-        justify-content: none;
+    .top-line{
+        display:grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr 1fr 0.2fr 1fr 1fr 0.2fr;
+        grid-template-areas: 
+        "name-l"
+        "name-i"
+        "name-v"
+        "email-l"
+        "email-i"
+        "email-v";
+        column-gap: 0;
     }
 
-    .input-4{
-        width: 100%;
-        box-sizing: border-box;
+    .address{
+        display:grid;
+        grid-template-columns: 49% 49%;
+        grid-template-rows: 1fr 1fr 0.2fr 1fr 1fr 0.2fr 1fr 1fr 0.2fr 1fr 1fr 0.2fr;
+        grid-template-areas: 
+        "address1-l address1-l" 
+        "address1-i address1-i" 
+        "address1-v address1-v" 
+        "address2-l address2-l"
+        "address2-i address2-i"
+        "address2-v address2-v"
+        "city-l state-l" 
+        "city-i state-i" 
+        "city-v state-v" 
+        "postcode-l country-l"
+        "postcode-i country-i"
+        "postcode-v country-v";
+        column-gap: 2%;
     }
 
     #submit {
