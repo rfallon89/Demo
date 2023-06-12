@@ -5,7 +5,6 @@ import { useState } from "react";
 
 function NavBar () {
     const navigate = useNavigate()
-    const [isMobile, setIsMobile] = useState(window.innerWidth<=1650)
     const route = () =>{
         navigate("/log-in")
     }

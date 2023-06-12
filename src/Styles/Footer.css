@@ -12,8 +12,14 @@ footer p {
 }
 
 @media only screen and (max-width: 750px){
+    footer{
+        width:90%;
+        background-color: white;
+        margin: auto;
+    }
     footer p {
         margin:0;
         text-align: center;
+        padding: 18px 18px;
     }
 }

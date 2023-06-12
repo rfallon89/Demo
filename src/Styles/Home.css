@@ -65,9 +65,10 @@
 }
 
 ul {
+    width: 100%;
     margin: 0 0 15px 0;
     padding-left:11px;
-    color:#616161;
+    color:#424141;
     font-weight: 600; 
 }
 
@@ -102,7 +103,7 @@ ul {
 }
 
 #bold{
-    color:#616161;
+    color:#424141;
     font-weight: 600;
     margin: 0;
 }
@@ -125,10 +126,11 @@ ul {
     }
     
     #section1 h3{
-        color: #6e6e6e ;
-        font-weight: 500;
+        color: #5a5959 ;
+        font-weight: 300;
         font-size: 20px;
         margin:35px 0 0 0;
+        line-height: 1.2;
     }
     
     #section1 img{
@@ -161,9 +163,10 @@ ul {
     
     #section2 h3{
         color:#dadada;
-        font-weight: 500;
+        font-weight: 300;
         font-size: 20px;
-        margin:0
+        line-height: 1.2;
+        margin:0;
     }
     
     #section2 p{
@@ -171,9 +174,11 @@ ul {
     }
     
     ul {
-        margin: 0 0 5% 0;
-        color:#616161;
-        font-weight: 600; 
+        margin: 4% 0 5% 4%;
+        color:#424141;
+        font-weight: 400;
+        width: 100%; 
+        line-height: 2;
     }
     
     #section3{
@@ -186,37 +191,39 @@ ul {
     
     #section3 h3{
         color: #6e6e6e ;
-        font-weight: 500;
+        font-weight: 300;
         font-size: 20px;
         margin:0;
+        line-height: 1.2;
         text-align: center;
     }
     
     #section3 h4{
         color:#616161;
-        font-weight: 600; 
+        font-weight: 400; 
         font-size: 16px;
-        margin:0;
+        margin:10px 0 15px 0;
         text-align: center;
     }
     
     #section3 div {
        column-count: 1;
        column-gap: 0px;
-       margin:25px 0;
+       margin:0 0;
     }
     
     #bold{
-        color:#616161;
-        font-weight: 600;
+        color:#424141;
+        font-weight: 400;
         margin: 0;
     }
 
     #login{
-        width:100%
+        width:100%;
     }
 
     #link{
         width:90%;
+        margin-top: 10px;
     }
 }

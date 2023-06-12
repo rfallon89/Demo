@@ -1,25 +1,24 @@
 #feedback-container{
-    background-color: rgba(114, 212, 114, 0.676);
+    background-color: rgba(177, 246, 177, 0.361);
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding:25px 0;
     margin:25px 0;
+    border-radius: 5px;
 }
 #feedback-container h2{
     margin: 0;
+    font-weight: 500;
 }
-#feedback-container p {
-    margin:0;
+#feedback-container img {
+    width:50px;
+    height: auto;
+    opacity: 0.75;
+    margin-bottom: 20px;
+
 }
-#tick{
-    border-radius: 50%;
-    border:solid 1px black;
-    background-color: green;
-    width:100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#feedback-container p{
+    margin: 0;
 }

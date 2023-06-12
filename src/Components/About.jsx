@@ -7,8 +7,8 @@ function About(){
         <article id='article-container'>
             <h1>About us</h1>
             <p>
-                <strong>Lorem ipsum dolor sit amet consectetur adipisicing elit.</strong>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, facilis praesentium. <Link>Similique earum maiores dolorem</Link> aspernatur suscipit possimus nostrum! Accusamus sapiente et sequi ab earum porro nesciunt alias magnam. Neque.
+                <span id='bold'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, facilis praesentium. <Link id='restore'>Similique earum maiores dolorem</Link> aspernatur suscipit possimus nostrum! Accusamus sapiente et sequi ab earum porro nesciunt alias magnam. Neque.
             </p>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sed odit, rem ipsam tempora inventore debitis atque voluptate laudantium corporis a amet iure quia illo labore non. Quaerat, temporibus totam?
@@ -18,8 +18,8 @@ function About(){
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius provident inventore beatae. Soluta officia suscipit quisquam ullam temporibus quae sapiente illum accusamus, fuga consequuntur iste, doloremque fugit nobis rem! Rem!
             </p>
+            <h3>Lorem ipsum dolor sit amet:</h3>
             <ul>
-                <h3>Lorem ipsum dolor sit amet:</h3>
                 <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
                 <li>Eius provident inventore beatae. Soluta officia suscipit quisquam ullam temporibus quae sapiente illum accusamus</li>
                 <li>Lorem ipsum dolor sit amet</li>

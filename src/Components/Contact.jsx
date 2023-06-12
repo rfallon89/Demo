@@ -5,17 +5,17 @@ import {useState} from 'react'
 import SubmitFeedback from "./SubmitFeedback"
 
 function Contact(){
-    const[submit,setSubmit] = useState(false)
+    const[response,setResponse] = useState(false)
 
     return(
         <div id="contact-container">
             <div id='section-container'>
                 <section>
                     <h1>Contact us</h1>
-                    <p><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet pariatur asperiores facere veniam, et quisquam distinctio dolorem aliquid eum reprehenderit nesciunt temporibus aspernatur quam error esse quod</strong></p>
-                    {submit
+                    <p id="bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet pariatur asperiores facere veniam, et quisquam distinctio dolorem aliquid eum reprehenderit nesciunt temporibus aspernatur quam error esse quod</p>
+                    {response
                     ?<SubmitFeedback/>
-                    :<Form setSubmit={setSubmit}/>
+                    :<Form setResponse={setResponse}/>
                     }
                 </section>
                 <div id="image-container">

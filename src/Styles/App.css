@@ -11,5 +11,6 @@
         margin:0 0;
         padding:0;
         background-color: white;
+        min-height: 100vh;
     }
 }

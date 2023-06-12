@@ -10,9 +10,9 @@
 .slide-container:after{
     content:'';
     position:absolute;
-    width: 50%;
+    width: 60%;
     height: 440px;
-    background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.818));
+    background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.912));
 }
 #carousel-image0{
     width: 102%;
@@ -81,12 +81,13 @@
     font-size: 36px;
     font-weight: 250;
     margin:0;
+    color:whitesmoke;
 }
 #carousel-subtitle{
     font-size: 16px;
     font-weight: 250;
     margin:30px 0;
-    color: rgb(194, 194, 194);
+    color: whitesmoke;
 }
 
 #link{

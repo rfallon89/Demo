@@ -1,10 +1,16 @@
-import submit from '../Assets/Icon_Submit.svg'
+import submitImg from '../Assets/Icon_Submit.svg'
 import '../Styles/Form.css'
 import { useState } from 'react';
 import { contactUS } from '../Utils/API';
-function Form({setSubmit}){
+import Spinner from './Spinner'
+
+function Form({setResponse}){
     const [showAddress,setShowAddress] = useState(false)
+   
     const [addNumber, setAddNumber] = useState(true)
+
+    const [submit, setSubmit] = useState(false) 
+   
     const [data, setData] = useState({
         FullName:'',
         EmailAddress:'',
@@ -12,6 +18,7 @@ function Form({setSubmit}){
         Message:'',
         bIncludeAddressDetails:false,
     })
+    
     const [addressData, setAddressData] = useState({
         AddressLine1:'',
         AddressLine2:'',
@@ -20,6 +27,7 @@ function Form({setSubmit}){
         Postcode:'',
         Country:'',
     })
+    
     const [validate, setValidate] = useState({
         name:'default',
         email:'default',
@@ -28,20 +36,33 @@ function Form({setSubmit}){
         message:'default',
         AddressLine1:true,
         AddressLine2:true,
+        CityTown:true,
         StateCounty:true,
         Postcode:true,
         Country:true,
     })
 
     const UpdateAddress = () =>{
-        setShowAddress(true)
-        setValidate({...validate,
-            AddressLine1:'default',
-        AddressLine2:'default',
-        StateCounty:'default',
-        Postcode:'default',
-        Country:'default'}
-        )
+        if(showAddress){
+            setShowAddress(false)
+            setValidate({...validate,
+                AddressLine1:true,
+            AddressLine2:true,
+            CityTown:true,
+            StateCounty:true,
+            Postcode:true,
+            Country:true})
+            }
+        else{
+            setShowAddress(true)
+            setValidate({...validate,
+                AddressLine1:'default',
+            AddressLine2:'default',
+            CityTown:'default',
+            StateCounty:'default',
+            Postcode:'default',
+            Country:'default'})
+        }  
     }
 
     const validateName =()=>{
@@ -100,8 +121,9 @@ function Form({setSubmit}){
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        if(!Object.values(validate).includes(false) ||!Object.values(validate).includes('default')){
-        contactUS(data,addressData).then(()=>setSubmit(true))
+        if(!Object.values(validate).includes(false) && !Object.values(validate).includes('default')){
+        contactUS(data,addressData).then(()=>setResponse(true))
+        
         }
     }
 
@@ -143,7 +165,7 @@ function Form({setSubmit}){
                 <button id='phone' disabled={!addNumber} onClick={()=>setAddNumber(false)}>Add new phone number</button>
                     
                 <div className='column'>
-                    <div className='row'>
+                    <div className='m-row'>
                     <label id="message">Message</label>
                     <p id='message-max'>Maximum text length is 500 characters</p>
                     </div>
@@ -171,32 +193,41 @@ function Form({setSubmit}){
                     </div>
                 </div>
 
-                <div className={!showAddress?'Address-row':'row'}>
-                    <div className='column'>
-                        <label id="city">City</label>
-                        <input className='input-4' id="CityTown" type="text" onChange={({target:{value}})=>setAddressData({...addressData,CityTown:value})} onBlur={validateAddress} value={addressData.CityTown}/>
-                        <p className={validate.CityTown?'hide':'show'}>*required</p>
+                <div className={!showAddress?'Address-row':'a-row'}>
+                    <div className='m-row'>
+                        <div className='column'>
+                            <label id="city">City</label>
+                            <input className='input-4' id="CityTown" type="text" onChange={({target:{value}})=>setAddressData({...addressData,CityTown:value})} onBlur={validateAddress} value={addressData.CityTown}/>
+                            <p className={validate.CityTown?'hide':'show'}>*required</p>
+                        </div>
+                        <div className='column'>
+                            <label id="region">State/County</label>
+                            <input className='input-4' id="StateCounty" type="text" onChange={({target:{value}})=>setAddressData({...addressData,StateCounty:value})} onBlur={validateAddress} value={addressData.StateCounty}/>
+                            <p className={validate.StateCounty?'hide':'show'}>*required</p>
+                        </div>
                     </div>
-                    <div className='column'>
-                        <label id="region">State/County</label>
-                        <input className='input-4' id="StateCounty" type="text" onChange={({target:{value}})=>setAddressData({...addressData,StateCounty:value})} onBlur={validateAddress} value={addressData.StateCounty}/>
-                        <p className={validate.StateCounty?'hide':'show'}>*required</p>
-                    </div>
-                    <div className='column'>
-                        <label id="postcode">Postcode</label>
-                        <input className='input-4' id="Postcode" type="text" onChange={({target:{value}})=>setAddressData({...addressData,Postcode:value})} onBlur={validateAddress} value={addressData.Postcode}/>
-                        <p className={validate.Postcode?'hide':'show'}>*required</p>
-                    </div>
-                    <div className='column'>
-                        <label id="country">Country</label>
-                        <input className='input-4' id="Country" type="text" name="country" onChange={({target:{value}})=>setAddressData({...addressData,Country:value})} onBlur={validateAddress} value={addressData.Country}/>
-                        <p className={validate.Country?'hide':'show'}>*required</p>
+                    <div className='m-row'>
+                        <div className='column'>
+                            <label id="postcode">Postcode</label>
+                            <input className='input-4' id="Postcode" type="text" onChange={({target:{value}})=>setAddressData({...addressData,Postcode:value})} onBlur={validateAddress} value={addressData.Postcode}/>
+                            <p className={validate.Postcode?'hide':'show'}>*required</p>
+                        </div>
+                        <div className='column'>
+                            <label id="country">Country</label>
+                            <input className='input-4' id="Country" type="text" name="country" onChange={({target:{value}})=>setAddressData({...addressData,Country:value})} onBlur={validateAddress} value={addressData.Country}/>
+                            <p className={validate.Country?'hide':'show'}>*required</p>
+                        </div>
                     </div>
                 </div>
 
                 <button id='submit'>
-                    <img src={submit} />
-                    <p>Submit</p>
+                    {submit?
+                        <Spinner/>
+                    :  <>
+                            <img src={submitImg} />
+                            <p>Submit</p>
+                        </>
+                    }
                 </button>
         </form>
     )
