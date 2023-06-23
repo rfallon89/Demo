@@ -7,7 +7,7 @@ const api = axios.create({
 export const bannerDetails = () => {
   return api
     .get("home/banner-details")
-    .then(({ data: { Details } }) => Details);
+    .then(({ data: { Details } }) => Details).catch((e)=>console.log(e));
 };
 
 export const contactUS = (data, address) => {

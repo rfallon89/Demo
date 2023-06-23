@@ -1,6 +1,6 @@
-import office from '../Assets/shutter2.jpg'
+import office from '../../Assets/shutter2.jpg'
 import {Link} from 'react-router-dom'
-import '../Styles/About.css'
+import './Styles/About.css'
 
 function About(){
     return(

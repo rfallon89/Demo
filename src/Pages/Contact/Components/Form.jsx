@@ -1,15 +1,14 @@
-import submitImg from '../Assets/Icon_Submit.svg'
+import submitImg from '../../../Assets/Icon_Submit.svg'
 import '../Styles/Form.css'
-import { useState } from 'react';
-import { contactUS } from '../Utils/API';
+import { useEffect, useState } from 'react';
+import { contactUS } from '../../../Utils/API';
 import Spinner from './Spinner'
 
 function Form({setResponse}){
     const [showAddress,setShowAddress] = useState(false)
-   
     const [addNumber, setAddNumber] = useState(true)
-
     const [submit, setSubmit] = useState(false) 
+    const [subVal,setSubVal] = useState(false)
    
     const [data, setData] = useState({
         FullName:'',
@@ -65,22 +64,30 @@ function Form({setResponse}){
         }  
     }
 
-    const validateName =()=>{
+    const validateName =(valName)=>{
         if(!data.FullName.length){
-            setValidate({...validate,FullName:false})
+            return valName?
+            {...validate,FullName:false}
+            :setValidate({...validate,FullName:false})
         }
         else{
-            setValidate({...validate,FullName:true})
+            return valName?
+            {validate,FullName:true}
+            :setValidate({...validate,FullName:true})
         }
     }
 
-    const validateEmail = () =>{
+    const validateEmail = (valEmail) =>{
         let input = data.EmailAddress 
         if(!input.length || !input.match(/[^\s@]+@[^\s@]+\.[^\s@]+/gi)){
-            setValidate({...validate,EmailAddress:false})
+            return valEmail?
+            {EmailAddress:false}
+            :setValidate({...validate,EmailAddress:false})
         }
         else{
-            setValidate({...validate,EmailAddress:true})
+            return valEmail?
+            {EmailAddress:true}
+            :setValidate({...validate,EmailAddress:true})
         }
     }
 
@@ -101,52 +108,85 @@ function Form({setResponse}){
         
     }
 
-    const validateMessage = () => {
+    const validateMessage = (input) => {
         if(!data.Message){
-            setValidate({...validate,Message:false})
+            return input?
+            {Message:false}
+            :setValidate({...validate,Message:false})
         }
         else{
-            setValidate({...validate,Message:true})
+            return input?
+            {Message:true}
+            :setValidate({...validate,Message:true})
         }
     }
 
-    const validateAddress = ({target}) =>{
-        if(!addressData[`${target.id}`].length){
-            setValidate({...validate,[`${target.id}`]:false})
+    const validateAddress = ({target},addressElements) =>{
+        if(addressElements){
+            let verdict = {}
+            addressElements.forEach((element)=>{
+                if(!addressData[`${element}`].length){
+                    verdict = {...verdict,[`${element}`]:false}
+                }
+                else{
+                    verdict = {...verdict,[`${element}`]:true}
+                }
+            })
+            return verdict
         }
         else{
-            setValidate({...validate,[`${target.id}`]:true})
+            if(!addressData[`${target.id}`].length){
+                setValidate({...validate,[`${target.id}`]:false})
+            }
+            else{
+                setValidate({...validate,[`${target.id}`]:true})
+            }
         }
     }
+
+   useEffect(()=>{  
+    if(!Object.values(validate).includes(false) && !Object.values(validate).includes('default')){
+        setSubmit(true)
+        contactUS(data,addressData).then(()=>{
+            setResponse(true)
+            setSubmit(false)
+        }).catch(({response:{data}})=>{
+            const fields ={}
+            data.Errors.forEach((error) => {
+                fields[error.FieldName] = false
+            });
+            setSubmit(false)
+            setValidate({...validate,...fields})
+        })
+    }
+   },[subVal])
 
     const handleSubmit = (e) =>{
+        console.log('here')
         e.preventDefault()
-        if(!Object.values(validate).includes(false) && !Object.values(validate).includes('default')){
-            setSubmit(true)
-            contactUS(data,addressData).then(()=>{
-                setResponse(true)
-                setSubmit(false)
-            }).catch(({response:{data}})=>{
-                const fields ={}
-                data.Errors.forEach((error) => {
-                    fields[error.FieldName] = false
-                });
-                setSubmit(false)
-                setValidate({...validate,...fields})
-            })
+        let verdict = validateName('y')
+        let email = validateEmail('y') 
+        let message = validateMessage('y')
+        verdict={...verdict,...email,...message}
+        if(data.bIncludeAddressDetails){
+            const addressElements = ['AddressLine1','AddressLine2','CityTown','StateCounty','Postcode','Country']
+            let addres = validateAddress({target:null},addressElements)
+            verdict= {...verdict,...addres}
         }
+        setValidate({...verdict})
+        setSubVal(!subVal)
     }
-
+    console.log(validate)
     return(
         <form onSubmit={handleSubmit}>
                 <div className='top-line'>
                     <label id="name-l">Full name</label>
                     <input className='name-i' id="name" type="text" onChange={({target:{value}})=>setData({...data,FullName:value})} onBlur={validateName} value={data.FullName}/>
-                    <p className={validate.FullName || validate.name === 'default' ?'hide':'show'}id="name-v">*Required</p>
+                    <p className={validate.FullName || validate.FullName === 'default' ?'hide':'show'} id="name-v">*Required</p>
                 
                     <label id="email-l">Email address</label>
                     <input className='email-i' id="email" type="email" onChange={({target:{value}})=>setData({...data,EmailAddress:value})} onBlur={validateEmail} value={data.EmailAddress}/>
-                    <p className={validate.EmailAddress || validate.email === 'default'?'hide':'show'}id="email-v">*Invalid email address</p>
+                    <p className={validate.EmailAddress || validate.EmailAddress === 'default'?'hide':'show'} id="email-v">*Invalid email address</p>
                 </div>
 
                 <div className='column'>
@@ -181,7 +221,11 @@ function Form({setResponse}){
 
                 <div>
                     <div id='address-toggle'>
-                    <button onClick={UpdateAddress} id={showAddress?'address-open':'address-closed'}></button>
+                    <button onClick={(e)=>{
+                        e.preventDefault()
+                        UpdateAddress()
+                        setData({...data,bIncludeAddressDetails:!data.bIncludeAddressDetails})
+                    }} id={showAddress?'address-open':'address-closed'}></button>
                     <p>Add address details</p>
                     </div>
                 </div>

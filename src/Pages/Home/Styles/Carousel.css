@@ -29,7 +29,7 @@
     object-fit: cover; 
 }
 .swiper-button-prev{
-    background-image:url(../Assets/Icon_Arrow.svg);
+    background-image:url(../../../Assets/Icon_Arrow.svg);
     background-repeat: no-repeat;
     background-size: 10px 10px;
     background-position: center;
@@ -44,7 +44,7 @@
   }
 
 .swiper-button-next{
-    background-image:url(../Assets/Icon_Arrow.svg);
+    background-image:url(../../../Assets/Icon_Arrow.svg);
     background-repeat: no-repeat;
     background-size: 10px 10px;
     transform:rotate(180deg);
@@ -87,6 +87,7 @@
 #carousel-subtitle{
     font-size: 16px;
     font-weight: 250;
+    width:80%;
     margin:30px 0;
     color: rgb(247, 247, 247);
 }

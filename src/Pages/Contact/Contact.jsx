@@ -1,8 +1,8 @@
-import Form from "./Form"
-import contact from '../Assets/Img_Contact.png'
-import '../Styles/Contact.css'
+import Form from "./Components/Form"
+import contact from '../../Assets/Img_Contact.png'
+import './Styles/Contact.css'
 import {useState} from 'react'
-import SubmitFeedback from "./SubmitFeedback"
+import SubmitFeedback from "./Components/SubmitFeedback"
 
 function Contact(){
     const[response,setResponse] = useState(false)

@@ -1,5 +1,5 @@
 import '../Styles/SubmitFeedback.css'
-import accept from '../Assets/accept.png'
+import accept from '../../../Assets/accept.png'
 function SubmitFeedback(){
 
     return(

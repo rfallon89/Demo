@@ -1,8 +1,7 @@
-import Carousel from "./Carousel"
-import office from '../Assets/shutter3.jpg'
+import Carousel from "./Components/Carousel"
+import office from '../../Assets/shutter3.jpg'
 import { Link } from "react-router-dom"
-import '../Styles/Home.css'
-import { useState } from "react"
+import './Styles/Home.css'
 
 function Home(){
     return(
@@ -20,7 +19,7 @@ function Home(){
                         <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
                         <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
                     </ul>
-                    <Link id='link'>Learn more</Link>
+                    <Link id='link'to="/about-us">Learn more</Link>
                 </div>
                 <img src={office} alt="office"/>
             </section>
